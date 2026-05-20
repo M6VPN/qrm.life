@@ -11,9 +11,20 @@ check_url() {
 	local label="$1"
 	local url="$2"
 	local insecure="${3:-false}"
+	local resolve="${4:-}"
 
 	if [ "${insecure}" = "true" ]; then
-		if curl -sI --max-time 10 --insecure "${url}" >/dev/null; then
+		if [ -n "${resolve}" ]; then
+			if curl -sI --max-time 10 --insecure --resolve "${resolve}" "${url}" >/dev/null; then
+				echo "ok: ${label}"
+				return 0
+			fi
+		elif curl -sI --max-time 10 --insecure "${url}" >/dev/null; then
+			echo "ok: ${label}"
+			return 0
+		fi
+	elif [ -n "${resolve}" ]; then
+		if curl -sI --max-time 10 --resolve "${resolve}" "${url}" >/dev/null; then
 			echo "ok: ${label}"
 			return 0
 		fi
@@ -45,7 +56,7 @@ if [ ! -f "${PUBLIC_INDEX}" ]; then
 fi
 
 check_url "local HTTP port 80" "http://127.0.0.1:80"
-check_url "local HTTPS port 443" "https://127.0.0.1:443" "true"
+check_url "local HTTPS port 443" "https://qrm.life" "true" "qrm.life:443:127.0.0.1"
 
 check_url "http://qrm.life redirects to HTTPS" "http://qrm.life"
 check_url "https://www.qrm.life redirects to apex" "https://www.qrm.life"
