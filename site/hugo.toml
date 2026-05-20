@@ -3,12 +3,12 @@
 
 baseURL = 'https://qrm.life/'
 languageCode = 'en-us'
-title = 'QRM Life'
+title = 'QRM.Life'
 enableRobotsTXT = true
 disableKinds = ['taxonomy', 'term']
 
 [params]
-	subtitle = 'Electronics, RF, packet radio, and resilient communications notes.'
+	subtitle = 'EE // RF // CompSci'
 	description = 'Electronics, RF, packet radio, schematics, downloads, and resilient communications notes.'
 
 [markup]
