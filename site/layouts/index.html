@@ -1,23 +1,33 @@
 <!-- QRM Life - Developed by M6VPN (M6VPN@tuta.com) -->
 <!-- qrm.life/site/layouts/index.html -->
-{{ define "main" }}
-<section class="hero">
-	<p class="eyebrow">qrm.life</p>
-	<h1>QRM Life</h1>
-	<p>{{ site.Params.subtitle }}</p>
-	<div class="hero-actions">
-		<a class="button" href="/posts/">Read Blog</a>
-		<a class="button secondary" href="/docs/">Open Docs</a>
-	</div>
-</section>
+<!doctype html>
+<html lang="en">
+<head>
+	{{ partial "head.html" . }}
+</head>
+<body>
+	{{ partial "header.html" . }}
+	<main id="content" class="wrap page">
+		<section class="hero">
+			<p class="eyebrow">qrm.life</p>
+			<h1>QRM Life</h1>
+			<p>{{ site.Params.subtitle }}</p>
+			<div class="hero-actions">
+				<a class="button" href="/posts/">Read Blog</a>
+				<a class="button secondary" href="/docs/">Open Docs</a>
+			</div>
+		</section>
 
-<section class="signal-grid" aria-label="Site sections">
-	<a href="/posts/"><span>01</span><strong>Blog</strong><p>Field notes, build logs, and updates.</p></a>
-	<a href="/projects/"><span>02</span><strong>Electronics</strong><p>Bench notes, circuits, and project records.</p></a>
-	<a href="/rf/"><span>03</span><strong>RF</strong><p>Signals, antennas, measurements, and propagation.</p></a>
-	<a href="/radio/"><span>04</span><strong>Packet Radio</strong><p>Radio, modem, and packet experiments.</p></a>
-	<a href="/schematics/"><span>05</span><strong>Schematics</strong><p>Diagrams, board notes, and references.</p></a>
-	<a href="/downloads/"><span>06</span><strong>Downloads</strong><p>Controlled static files and attachments.</p></a>
-	<a href="/docs/"><span>07</span><strong>Docs</strong><p>Structured technical documentation.</p></a>
-</section>
-{{ end }}
+		<section class="signal-grid" aria-label="Site sections">
+			<a href="/posts/"><span>01</span><strong>Blog</strong><p>Field notes, build logs, and updates.</p></a>
+			<a href="/projects/"><span>02</span><strong>Electronics</strong><p>Bench notes, circuits, and project records.</p></a>
+			<a href="/rf/"><span>03</span><strong>RF</strong><p>Signals, antennas, measurements, and propagation.</p></a>
+			<a href="/radio/"><span>04</span><strong>Packet Radio</strong><p>Radio, modem, and packet experiments.</p></a>
+			<a href="/schematics/"><span>05</span><strong>Schematics</strong><p>Diagrams, board notes, and references.</p></a>
+			<a href="/downloads/"><span>06</span><strong>Downloads</strong><p>Controlled static files and attachments.</p></a>
+			<a href="/docs/"><span>07</span><strong>Docs</strong><p>Structured technical documentation.</p></a>
+		</section>
+	</main>
+	{{ partial "footer.html" . }}
+</body>
+</html>

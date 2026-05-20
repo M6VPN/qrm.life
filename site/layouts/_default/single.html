@@ -1,14 +1,24 @@
 <!-- QRM Life - Developed by M6VPN (M6VPN@tuta.com) -->
 <!-- qrm.life/site/layouts/_default/single.html -->
-{{ define "main" }}
-<article class="article">
-	<header class="page-head">
-		<p class="eyebrow">{{ .Section | default "Page" }}</p>
-		<h1>{{ .Title }}</h1>
-		{{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
-	</header>
-	<div class="content">
-		{{ .Content }}
-	</div>
-</article>
-{{ end }}
+<!doctype html>
+<html lang="en">
+<head>
+	{{ partial "head.html" . }}
+</head>
+<body>
+	{{ partial "header.html" . }}
+	<main id="content" class="wrap page">
+		<article class="article">
+			<header class="page-head">
+				<p class="eyebrow">{{ .Section | default "Page" }}</p>
+				<h1>{{ .Title }}</h1>
+				{{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+			</header>
+			<div class="content">
+				{{ .Content }}
+			</div>
+		</article>
+	</main>
+	{{ partial "footer.html" . }}
+</body>
+</html>

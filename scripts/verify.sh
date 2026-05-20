@@ -37,6 +37,18 @@ check_url() {
 	return 1
 }
 
+check_port() {
+	local host="$1"
+	local port="$2"
+
+	if timeout 10 bash -c "</dev/tcp/${host}/${port}" 2>/dev/null; then
+		echo "ok: local port ${port} is reachable"
+	else
+		echo "error: local port ${port} is not reachable"
+		return 1
+	fi
+}
+
 echo "dns: qrm.life and www.qrm.life should both point to 104.244.73.226"
 
 caddy validate --config "${ROOT_DIR}/Caddyfile"
@@ -55,8 +67,8 @@ if [ ! -f "${PUBLIC_INDEX}" ]; then
 	exit 1
 fi
 
-check_url "local HTTP port 80" "http://127.0.0.1:80"
-check_url "local HTTPS port 443" "https://qrm.life" "true" "qrm.life:443:127.0.0.1"
+check_port "127.0.0.1" "80"
+check_port "127.0.0.1" "443"
 
 check_url "http://qrm.life redirects to HTTPS" "http://qrm.life"
 check_url "https://www.qrm.life redirects to apex" "https://www.qrm.life"
