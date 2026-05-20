@@ -1,0 +1,38 @@
+# QRM Life - Developed by M6VPN (M6VPN@tuta.com)
+# qrm.life/Caddyfile
+{
+	email admin@qrm.life
+}
+
+qrm.life {
+	root * /srv/qrm.life/public
+	encode zstd gzip
+	file_server
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options SAMEORIGIN
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy geolocation=(), microphone=(), camera=()
+	}
+
+	@hidden {
+		path /.git* /.env* /node_modules* /vendor*
+	}
+	respond @hidden 404
+
+	# Future only; do not enable yet:
+	# handle_path /bbs/* {
+	# 	reverse_proxy 100.x.y.z:8080
+	# }
+	# handle_path /node/* {
+	# 	reverse_proxy 100.x.y.z:8081
+	# }
+	# handle_path /linbpq/* {
+	# 	reverse_proxy 100.x.y.z:8082
+	# }
+}
+
+www.qrm.life {
+	redir https://qrm.life{uri} permanent
+}

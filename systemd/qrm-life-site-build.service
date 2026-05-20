@@ -1,0 +1,17 @@
+# QRM Life - Developed by M6VPN (M6VPN@tuta.com)
+# qrm.life/systemd/qrm-life-site-build.service
+
+[Unit]
+Description=Build qrm.life static website
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/srv/qrm.life/repo
+ExecStart=/srv/qrm.life/repo/scripts/build.sh
+User=qrmdeploy
+Group=qrmdeploy
+
+[Install]
+WantedBy=multi-user.target

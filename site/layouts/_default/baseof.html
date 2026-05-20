@@ -1,0 +1,46 @@
+<!-- QRM Life - Developed by M6VPN (M6VPN@tuta.com) -->
+<!-- qrm.life/site/layouts/_default/baseof.html -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="{{ site.Params.description }}">
+	<title>{{ if .Title }}{{ .Title }} | {{ end }}{{ site.Title }}</title>
+	{{ $style := resources.Get "css/main.css" | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+</head>
+<body>
+	<a class="skip-link" href="#content">Skip to content</a>
+	<header class="site-header">
+		<div class="wrap header-grid">
+			<a class="brand" href="/">
+				<span class="brand-mark">QRM</span>
+				<span>
+					<strong>QRM Life</strong>
+					<small>{{ site.Params.subtitle }}</small>
+				</span>
+			</a>
+			<nav class="site-nav" aria-label="Main navigation">
+				<a href="/posts/">Blog</a>
+				<a href="/projects/">Electronics</a>
+				<a href="/rf/">RF</a>
+				<a href="/schematics/">Schematics</a>
+				<a href="/radio/">Packet Radio</a>
+				<a href="/docs/">Docs</a>
+				<a href="/downloads/">Downloads</a>
+				<a href="/about/">About</a>
+			</nav>
+		</div>
+	</header>
+	<main id="content" class="wrap page">
+		{{ block "main" . }}{{ end }}
+	</main>
+	<footer class="site-footer">
+		<div class="wrap">
+			<span>QRM Life</span>
+			<span>Static notes for electronics, RF, and resilient communications.</span>
+		</div>
+	</footer>
+</body>
+</html>

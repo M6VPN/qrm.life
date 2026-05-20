@@ -1,0 +1,17 @@
+# QRM Life - Developed by M6VPN (M6VPN@tuta.com)
+# qrm.life/site/hugo.toml
+
+baseURL = 'https://qrm.life/'
+languageCode = 'en-us'
+title = 'QRM Life'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
+
+[params]
+	subtitle = 'Electronics, RF, packet radio, and resilient communications notes.'
+	description = 'Electronics, RF, packet radio, schematics, downloads, and resilient communications notes.'
+
+[markup]
+	[markup.goldmark]
+		[markup.goldmark.renderer]
+			unsafe = false

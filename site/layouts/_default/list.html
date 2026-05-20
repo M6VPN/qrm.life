@@ -1,0 +1,23 @@
+<!-- QRM Life - Developed by M6VPN (M6VPN@tuta.com) -->
+<!-- qrm.life/site/layouts/_default/list.html -->
+{{ define "main" }}
+<section class="page-head">
+	<p class="eyebrow">Archive</p>
+	<h1>{{ .Title }}</h1>
+	{{ with .Content }}<div class="content">{{ . }}</div>{{ end }}
+</section>
+
+<section class="entry-list" aria-label="{{ .Title }}">
+	{{ range .Pages }}
+	<article class="entry">
+		<a href="{{ .RelPermalink }}">
+			<h2>{{ .Title }}</h2>
+			{{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+			{{ with .Summary }}<p>{{ . }}</p>{{ end }}
+		</a>
+	</article>
+	{{ else }}
+	<p>No entries published yet.</p>
+	{{ end }}
+</section>
+{{ end }}

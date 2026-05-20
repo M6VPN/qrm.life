@@ -1,0 +1,14 @@
+# QRM Life - Developed by M6VPN (M6VPN@tuta.com)
+# qrm.life/.gitignore
+
+.env
+.bin/
+.venv/
+public/
+site/public/
+site/resources/
+site/static/docs/
+.mkdocs-build/
+__pycache__/
+*.pyc
+logs/
